@@ -4,7 +4,9 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import br.edu.iftm.ds.exemplos.arquitetura.domain.Cliente;
@@ -28,6 +30,12 @@ public class ClienteControl {
     @GetMapping("/{id}") 
     public Cliente getClienteCodigo(@PathVariable("id") Integer codigo) {
         return new Cliente(codigo,"esse cara nao existe senhor");
+    }
+    
+    @PostMapping
+    public void salvar(@RequestParam Integer codigo,@RequestParam String nome) {
+        Cliente cliente = new Cliente(codigo, nome);
+        repository.save(cliente);
     }
 
 }

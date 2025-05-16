@@ -36,4 +36,8 @@ public class ClienteRepository {
         return clientes;
     }
 
+    public void save(Cliente cliente) {
+        clientes.add(cliente);
+    }
+
 }
